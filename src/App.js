@@ -18,25 +18,44 @@ const headers = {
 export default class App extends React.Component {
   state = {
     telaAtual: "home",
-	
   };
 
   goToCadastroServicos = () => {
-	  this.setState({telaAtual: "cadastro"})
-  }
+    this.setState({ telaAtual: "cadastro" });
+  };
 
   goToMostrarServicos = () => {
-    this.setState({telaAtual: "servicos"})
-  }
+    this.setState({ telaAtual: "servicos" });
+  };
+
+  goToHome = () => {
+    this.setState({ telaAtual: "home" });
+  };
+
+  goToCarrinho = () => {
+    this.setState({ telaAtual: "carrinho" });
+  };
 
   escolherTela = () => {
     switch (this.state.telaAtual) {
       case "home":
-        return <Home goToCadastroServicos={this.goToCadastroServicos} goToMostrarServicos={this.goToMostrarServicos}   />;
+        return (
+          <Home
+            goToCadastroServicos={this.goToCadastroServicos}
+            goToMostrarServicos={this.goToMostrarServicos}
+            goToHome={this.goToHome}
+            goToCarrinho={this.goToCarrinho}
+          />
+        );
       case "cadastro":
-        return <CadastroServicos  />;
+        return <CadastroServicos />;
       case "carrinho":
-        return <PageCarrinho />;
+        return (
+          <PageCarrinho
+            goToHome={this.goToHome}
+            goToCarrinho={this.goToCarrinho}
+          />
+        );
       case "servicos":
         return <PageMostrarServicos />;
       default:
@@ -51,18 +70,30 @@ export default class App extends React.Component {
   render() {
     return (
       <>
-        <div>
-          <button onClick={() => this.mudaTela("home")}>Home</button>
-		  <button onClick={() => this.mudaTela("carrinho")}>
-            Carrinho
-          </button>
-		 {/*  <button onClick={() => this.mudaTela("cadastro")}>
+        <header>
+          <ComponenteHeader
+            goToCadastroServicos={this.goToCadastroServicos}
+            goToMostrarServicos={this.goToMostrarServicos}
+            goToHome={this.goToHome}
+            goToCarrinho={this.goToCarrinho}
+          />
+        </header>
+
+        <main>
+          <div>
+           {/*  <button onClick={() => this.mudaTela("home")}>Home</button>
+            <button onClick={() => this.mudaTela("carrinho")}>Carrinho</button>
+             <button onClick={() => this.mudaTela("cadastro")}>
             Quero ser um Ninja
           </button>
-         
           <button onClick={() => this.mudaTela("servicos")}>Contratar um Ninja</button> */}
-          <>{this.escolherTela()}</>
-        </div>
+            <>{this.escolherTela()}</>
+          </div>
+        </main>
+
+        {/* <footer>
+          <>FOOOTER</>
+        </footer> */}
       </>
     );
   }
