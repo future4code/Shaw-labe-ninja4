@@ -68,10 +68,10 @@ export default class ComponenteHeader extends React.Component{
             </h1>
           </Titulo>
         <Nav>
-            <button>
+            <button onClick={this.props.goToHome}>
               Início
             </button>
-            <button>
+            <button onClick={this.props.goToCarrinho}>
               Carrinho
             </button>
         </Nav>
