@@ -18,14 +18,23 @@ const headers = {
 export default class App extends React.Component {
   state = {
     telaAtual: "home",
+	
   };
+
+  goToCadastroServicos = () => {
+	  this.setState({telaAtual: "cadastro"})
+  }
+
+  goToMostrarServicos = () => {
+    this.setState({telaAtual: "servicos"})
+  }
 
   escolherTela = () => {
     switch (this.state.telaAtual) {
       case "home":
-        return <Home />;
+        return <Home goToCadastroServicos={this.goToCadastroServicos} goToMostrarServicos={this.goToMostrarServicos}   />;
       case "cadastro":
-        return <CadastroServicos />;
+        return <CadastroServicos  />;
       case "carrinho":
         return <PageCarrinho />;
       case "servicos":
@@ -47,11 +56,11 @@ export default class App extends React.Component {
 		  <button onClick={() => this.mudaTela("carrinho")}>
             Carrinho
           </button>
-		  <button onClick={() => this.mudaTela("cadastro")}>
+		 {/*  <button onClick={() => this.mudaTela("cadastro")}>
             Quero ser um Ninja
           </button>
          
-          <button onClick={() => this.mudaTela("servicos")}>Contratar um Ninja</button>
+          <button onClick={() => this.mudaTela("servicos")}>Contratar um Ninja</button> */}
           <>{this.escolherTela()}</>
         </div>
       </>
