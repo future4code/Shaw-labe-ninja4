@@ -7,45 +7,91 @@ const headers = {
         Authorization: "34cb6ce8-5c1e-4c13-8f08-adc127e1cd24",
     },
 };
+const ContainerFiltros = styled.div`
+display: flex;
+flex-direction: column;
+
+`
+const ContainerBusca = styled.div`
+display: flex;
+justify-content: center;
+margin: 50px;
+input{
+    width:350px;
+    height: 30px;
+    padding-left: 10px;
+    border-radius: 3px;
+    font-style: italic;
+    border: 1px solid grey;
+}
+
+
+`
+const ContainerFiltrosfilho = styled.div`
+display: flex;
+justify-content:center;
+
+input.minmax{
+    margin-right:10px;
+    width: 100px;
+    height: 20px;
+    font-size: 12px;
+    border-radius: 3px;
+    padding-left: 10px;
+    border: 1px solid grey;
+}
+select{
+   
+    border-radius: 3px;
+    padding-left: 10px;
+    border: 1px solid grey;
+}
+
+`
 
 
 export default class ComponenteFiltro extends React.Component {
 
-       
+
 
     render() {
         return (
-            <>
-               <input 
-               type="text" 
-               placeholder="Busca"
-               value={this.props.inputBusca} 
-               onChange={this.props.onChangeBusca}
-               />
-                  <select name="" id=""> 
-                  <option>Prazo</option>
-                  <option>Titulo</option>
-                  <option>Preço Crescente</option>
-                  <option>Preço Decrescente</option>
-                  </select>
-                
-               
+            <ContainerFiltros>
+                <ContainerBusca>
+                    <input
+                        type="text"
+                        placeholder="O que vc precisa?"
+                        value={this.props.inputBusca}
+                        onChange={this.props.onChangeBusca}
+                    />
+                </ContainerBusca>
+
+                <ContainerFiltrosfilho>
                     <input type="number"
-                    placeholder="Valor Min."
-                    value={this.props.inputValorMin} 
-                    onChange={this.props.onChangeValorMin}
+                        className="minmax"
+                        placeholder="Valor Mín."
+                        value={this.props.inputValorMin}
+                        onChange={this.props.onChangeValorMin}
                     />
 
-               
+
                     <input type="number"
-                    placeholder="Valor Max."
-                    value={this.props.inputValorMax}
-                    onChange={this.props.onChangeValorMax}
+                        className="minmax"
+                        placeholder="Valor Máx."
+                        value={this.props.inputValorMax}
+                        onChange={this.props.onChangeValorMax}
 
                     />
-                <>OIS</>
+                    <select name="Filtro" className="select">
+                        <option value="">Mais filtros</option>
+                        <option value="">Prazo</option>
+                        <option value="">Titulo</option>
+                        <option value="">Preço Crescente</option>
+                        <option value="">Preço Decrescente</option>
+                    </select>
 
-            </>
+                </ContainerFiltrosfilho>
+            </ContainerFiltros>
         )
     }
 
