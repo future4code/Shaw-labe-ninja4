@@ -24,8 +24,6 @@ input{
     font-style: italic;
     border: 1px solid grey;
 }
-
-
 `
 const ContainerFiltrosfilho = styled.div`
 display: flex;
@@ -53,6 +51,7 @@ select{
 export default class ComponenteFiltro extends React.Component {
 
 
+   
 
     render() {
         return (
@@ -82,12 +81,14 @@ export default class ComponenteFiltro extends React.Component {
                         onChange={this.props.onChangeValorMax}
 
                     />
-                    <select name="Filtro" className="select">
+                    <select name="Filtro" onChange={this.props.onChangeSelect} value={this.props.select} className="select">
+
                         <option value="">Mais filtros</option>
                         <option value="">Prazo</option>
                         <option value="">Titulo</option>
                         <option value="">Preço Crescente</option>
                         <option value="">Preço Decrescente</option>
+
                     </select>
 
                 </ContainerFiltrosfilho>

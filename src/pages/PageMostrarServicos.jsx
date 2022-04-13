@@ -17,7 +17,33 @@ export default class PageMostrarServicos extends React.Component {
     inputValorMin: "",
     inputValorMax: "",
 
+    select:"prazo",
+
+
+
   }
+ 
+getAllJobs = () => {
+    console.log("barata")
+    const url = "https://labeninjas.herokuapp.com/jobs"
+    axios
+    .get(url,headers)
+    .then(({data})=>{
+       
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+}
+
+componentDidMount(){
+    this.getAllJobs()
+}
+
+onChangeSelect=(e)=>{
+    console.log(e.target.value)
+    this.setState({select: e.target.value})
+}
   onChangeBusca = (event) => {
     this.setState({ inputBusca: event.target.value })
   }
@@ -41,12 +67,15 @@ export default class PageMostrarServicos extends React.Component {
           inputValorMax={this.state.inputValorMax}
           onChangeValorMax={this.onChangeValorMax}
 
+          select={this.state.select}
+          onChangeSelect={this.onChangeSelect}
+
 
         />
         <h1>LabeNinjas</h1>
         <h2>O talento certo no momento certo</h2>
         <>SOU A PÁGINA DE CONTRATAR SERVIÇOS</>
-      </>
+        </>
     );
   }
 }
