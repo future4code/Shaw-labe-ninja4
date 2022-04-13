@@ -53,6 +53,8 @@ const Botoes = styled.div`
     }
   
 `
+
+
 let iconStyles = { color: "#7869bf", fontSize: "2em", cursor: "pointer" };
 
 
@@ -61,6 +63,8 @@ export default class ComponentCardServicos extends React.Component{
     titulo:"",
     prazo:"",
     preco: 0,
+    idServico: "",
+    descricao: ""
   }
 
   
@@ -75,6 +79,8 @@ getAllJobsById = () => {
     this.setState({titulo:res.data.title})
     this.setState({prazo:res.data.dueDate})
     this.setState({preco:res.data.price})
+    this.setState({idServico:res.data.id})
+    this.setState({descricao:res.data.description})
      
   })
   .catch((err)=>{
@@ -92,7 +98,14 @@ getAllJobsById = () => {
             <br/>
           </Infos>
           <Botoes>
-            <button>Ver Detalhes</button>
+            <button onClick={()=>this.props.goToDetalhes(this.props.id)} 
+            id = {this.props.id}
+            titulo = {this.state.titulo}
+            prazo = {this.state.prazo}
+            preco = {this.state.preco}
+            idServico = {this.state.idServico}
+            descricao = {this.state.descricao}
+            >Ver Detalhes</button>
             <BsFillCartCheckFill style={iconStyles} onClick={()=> this.props.adicionaItemCarrinho(this.props.id)}/>
           </Botoes>
         </InfoCard>
