@@ -4,6 +4,7 @@ import styled from "styled-components";
 import ComponenteFiltro from '../components/ComponenteFiltro'
 import ComponentCardServicos from "../components/ComponenteCardServicos";
 import { BsFillCartCheckFill } from "react-icons/bs";
+import ComponenteCarrinho from "../components/ComponenteCarrinho";
 
 const Card = styled.div`
   display: flex;
@@ -28,7 +29,10 @@ export default class PageMostrarServicos extends React.Component {
 
     select:"prazo",
 
-    dadosCards: []
+    dadosCards: [],
+    valorTotal: 0,
+
+    carrinho: []
 
 
 
@@ -81,12 +85,27 @@ onChangeSelect=(e)=>{
     this.setState({ inputValorMax: event.target.value })
   }
 
+  adicionaItemCarrinho = (id) => {
+
+      const addItem = this.state.dadosCards.find(item => id === item.id)
+      const novoItemCarrinho = [...this.state.carrinho, addItem]
+    this.setState({carrinho: novoItemCarrinho})
+  }
+
+
+  removerItemDoCarrinho = (item) => {
+
+   alert("removeu", item);
+
+  }
+
   render() {
     const mapeandoJobs = this.state.dadosCards.map((dado)=>{
       return (
-        <ComponentCardServicos key={dado.id} id = {dado.id}></ComponentCardServicos>
+        <ComponentCardServicos key={dado.id} id = {dado.id} adicionaItemCarrinho={this.adicionaItemCarrinho} ></ComponentCardServicos>
       )
     })
+    console.log(this.state.carrinho);
 
     return (
       <>
@@ -111,6 +130,11 @@ onChangeSelect=(e)=>{
         <Card>
         {mapeandoJobs}
         </Card>
+        <ComponenteCarrinho
+              dadosCards={this.state.carrinho}
+              valorTotal={this.state.valorTotal}
+              removerItemDoCarrinho = {this.removerItemDoCarrinho}
+            />
         </>
 
         

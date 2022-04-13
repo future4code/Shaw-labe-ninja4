@@ -93,7 +93,7 @@ getAllJobsById = () => {
           </Infos>
           <Botoes>
             <button>Ver Detalhes</button>
-            <BsFillCartCheckFill style={iconStyles}/>
+            <BsFillCartCheckFill style={iconStyles} onClick={()=> this.props.adicionaItemCarrinho(this.props.id)}/>
           </Botoes>
         </InfoCard>
       </CardContainer>
