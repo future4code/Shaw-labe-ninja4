@@ -8,6 +8,8 @@ import PageCarrinho from "./pages/PageCarrinho";
 import PageMostrarServicos from "./pages/PageMostrarServicos";
 import Footer from "./components/Footer";
 import ComponenteHeader from "./components/ComponenteHeader";
+import ComponenteCarrinho from "./components/ComponenteCarrinho";
+import Detalhes from "./pages/Detalhes";
 
 const headers = {
   headers: {
@@ -18,14 +20,19 @@ const headers = {
 export default class App extends React.Component {
   state = {
     telaAtual: "home",
+    idCard: ""
   };
 
   goToCadastroServicos = () => {
     this.setState({ telaAtual: "cadastro" });
   };
 
-  goToMostrarServicos = () => {
-    this.setState({ telaAtual: "servicos" });
+  goToMostrarServicos = (id) => {
+    this.setState({ telaAtual: "servicos", idCard:id });
+  };
+
+  goToDetalhes = (id) => {
+    this.setState({ telaAtual: "detalhes", idCard: id });
   };
 
   goToHome = () => {
@@ -54,10 +61,25 @@ export default class App extends React.Component {
           <PageCarrinho
             goToHome={this.goToHome}
             goToCarrinho={this.goToCarrinho}
+            dadosCards={this.state.carrinho}
+            valorTotal={this.state.valorTotal}
+            removerItemDoCarrinho={this.removerItemDoCarrinho}
           />
         );
       case "servicos":
-        return <PageMostrarServicos />;
+        return <PageMostrarServicos 
+            goToDetalhes = {this.goToDetalhes}
+            idCard = {this.idCard}
+            />;
+      case "detalhes":
+        return (
+          <Detalhes
+            goToHome={this.goToHome}
+            goToCarrinho={this.goToCarrinho}
+            goToDetalhes = {this.goToDetalhes}
+            idCard = {this.idCard}
+          />
+        );
       default:
         return <Home />;
     }
@@ -88,6 +110,7 @@ export default class App extends React.Component {
           </button>
           <button onClick={() => this.mudaTela("servicos")}>Contratar um Ninja</button> */}
             <>{this.escolherTela()}</>
+            
           </div>
         </main>
 
