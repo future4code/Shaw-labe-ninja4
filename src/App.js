@@ -61,6 +61,9 @@ export default class App extends React.Component {
           <PageCarrinho
             goToHome={this.goToHome}
             goToCarrinho={this.goToCarrinho}
+            dadosCards={this.state.carrinho}
+            valorTotal={this.state.valorTotal}
+            removerItemDoCarrinho={this.removerItemDoCarrinho}
           />
         );
       case "servicos":
