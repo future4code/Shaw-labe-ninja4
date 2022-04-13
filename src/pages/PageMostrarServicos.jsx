@@ -2,6 +2,15 @@ import React from "react";
 import axios from "axios";
 import styled from "styled-components";
 import ComponenteFiltro from '../components/ComponenteFiltro'
+import ComponentCardServicos from "../components/ComponenteCardServicos";
+import { BsFillCartCheckFill } from "react-icons/bs";
+
+const Card = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+`
+
 
 const headers = {
   headers: {
@@ -19,16 +28,19 @@ export default class PageMostrarServicos extends React.Component {
 
     select:"prazo",
 
+    dadosCards: []
+
 
 
   }
  
 getAllJobs = () => {
-    console.log("barata")
     const url = "https://labeninjas.herokuapp.com/jobs"
     axios
     .get(url,headers)
-    .then(({data})=>{
+    .then((res)=>{
+      this.setState({dadosCards:res.data.jobs})
+      console.log(res.data.jobs)
        
     })
     .catch((err)=>{
@@ -36,8 +48,23 @@ getAllJobs = () => {
     })
 }
 
+getAllJobsById = () => {
+  const url = `https://labeninjas.herokuapp.com/jobs/${this.state.dadosCards[0].id}`
+  console.log(this.state.dadosCards[0].id)
+  axios
+  .get(url,headers)
+  .then((res)=>{
+    console.log(res.data.jobs)
+     
+  })
+  .catch((err)=>{
+      console.log(err)
+  })
+}
+
 componentDidMount(){
     this.getAllJobs()
+    
 }
 
 onChangeSelect=(e)=>{
@@ -55,6 +82,12 @@ onChangeSelect=(e)=>{
   }
 
   render() {
+    const mapeandoJobs = this.state.dadosCards.map((dado)=>{
+      return (
+        <ComponentCardServicos key={dado.id} id = {dado.id}></ComponentCardServicos>
+      )
+    })
+
     return (
       <>
        
@@ -75,7 +108,12 @@ onChangeSelect=(e)=>{
         <h1>LabeNinjas</h1>
         <h2>O talento certo no momento certo</h2>
         <>SOU A PÁGINA DE CONTRATAR SERVIÇOS</>
+        <Card>
+        {mapeandoJobs}
+        </Card>
         </>
+
+        
     );
   }
 }

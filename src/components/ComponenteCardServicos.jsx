@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import styled from styled;
+import styled from "styled-components";
 import { BsFillCartCheckFill } from "react-icons/bs";
 
 const headers = {
@@ -24,6 +24,7 @@ const InfoCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
   color: black;
 `
 const Infos = styled.div`
@@ -56,15 +57,38 @@ let iconStyles = { color: "#7869bf", fontSize: "2em", cursor: "pointer" };
 
 
 export default class ComponentCardServicos extends React.Component{
+  state = {
+    titulo:"",
+    prazo:"",
+    preco: 0,
+  }
 
+  
+componentDidMount(){
+  this.getAllJobsById()
+}
+getAllJobsById = () => {
+  const url = `https://labeninjas.herokuapp.com/jobs/${this.props.id}`
+  axios
+  .get(url,headers)
+  .then((res)=>{
+    this.setState({titulo:res.data.title})
+    this.setState({prazo:res.data.dueDate})
+    this.setState({preco:res.data.price})
+     
+  })
+  .catch((err)=>{
+      console.log(err)
+  })
+}
   
   render() {
     return (
       <CardContainer>
         <InfoCard>
           <Infos>
-            <h3>Nome Serviço</h3>
-            <p>Até <span>PRAZO</span> por <span>PREÇO</span></p>
+            <h3>{this.state.titulo}</h3>
+            <p>Até <span>{this.state.prazo}</span> por <span>R${this.state.preco}</span></p>
             <br/>
           </Infos>
           <Botoes>
