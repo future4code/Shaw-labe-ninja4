@@ -23,14 +23,12 @@ export default class PageMostrarServicos extends React.Component {
     inputBusca: "",
     inputValorMin: "",
     inputValorMax: "",
-
     select: "prazo",
-
     dadosCards: [],
     valorTotal: 0,
-
     carrinho: [],
   };
+
 
   getAllJobs = () => {
     const url = "https://labeninjas.herokuapp.com/jobs";
@@ -66,6 +64,7 @@ export default class PageMostrarServicos extends React.Component {
     console.log(e.target.value);
     this.setState({ select: e.target.value });
   };
+
   onChangeBusca = (event) => {
     this.setState({ inputBusca: event.target.value });
   };
@@ -87,7 +86,46 @@ export default class PageMostrarServicos extends React.Component {
   };
 
   render() {
-    const mapeandoJobs = this.state.dadosCards.map((dado) => {
+
+    const copiaDadosCards = [...this.state.dadosCards]
+      .filter((dado) => {
+        
+        return this.state.inputValorMin === "" || dado.price >= this.state.inputValorMin
+      })
+      .filter((dado) => {
+        
+        return this.state.inputValorMax === "" || dado.price <= this.state.inputValorMax
+      })
+     .filter((dado) => {
+        return dado.title.toLowerCase().includes(this.state.inputBusca.toLowerCase())
+      });
+      // 
+    copiaDadosCards.sort((primeiroJob, segundoJob) => {
+      switch (this.state.select) {
+        case "titulo":
+          return (
+            primeiroJob.title.localeCompare(segundoJob.title)
+          );
+          case "prazo":
+            return (
+              new Date(primeiroJob.dueDate) -new Date(segundoJob.dueDate).getTime()
+            )
+        default:
+          return (
+            this.state.select *
+            (primeiroJob.price - segundoJob.price)
+          );
+      }
+    });
+
+    //-------- map ára reederizar na tela
+    
+        
+  
+      
+          
+
+   const mapeandoJobs = copiaDadosCards.map((dado) => {
       return (
         <ComponentCardServicos
           key={dado.id}
@@ -102,6 +140,7 @@ export default class PageMostrarServicos extends React.Component {
     return (
       <>
         <ComponenteFiltro
+
           inputBusca={this.state.inputBusca}
           onChangeBusca={this.onChangeBusca}
           inputValorMin={this.state.inputValorMin}
@@ -123,6 +162,7 @@ export default class PageMostrarServicos extends React.Component {
           removerItemDoCarrinho={this.removerItemDoCarrinho}
         />
       </>
+
     );
   }
 }
