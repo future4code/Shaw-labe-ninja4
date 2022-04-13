@@ -26,51 +26,52 @@ export default class PageMostrarServicos extends React.Component {
     inputValorMin: "",
     inputValorMax: "",
 
-    select:"prazo",
+    dadosCards: [],
 
-    dadosCards: []
-
+    select: "prazo",
 
 
   }
- 
-getAllJobs = () => {
+
+
+  getAllJobs = () => {
     const url = "https://labeninjas.herokuapp.com/jobs"
     axios
-    .get(url,headers)
-    .then((res)=>{
-      this.setState({dadosCards:res.data.jobs})
-      console.log(res.data.jobs)
-       
-    })
-    .catch((err)=>{
+      .get(url, headers)
+      .then((res) => {
+        this.setState({ dadosCards: res.data.jobs })
+        console.log(res.data.jobs)
+        
+
+      })
+      .catch((err) => {
         console.log(err)
-    })
-}
+      })
+  }
 
-getAllJobsById = () => {
-  const url = `https://labeninjas.herokuapp.com/jobs/${this.state.dadosCards[0].id}`
-  console.log(this.state.dadosCards[0].id)
-  axios
-  .get(url,headers)
-  .then((res)=>{
-    console.log(res.data.jobs)
-     
-  })
-  .catch((err)=>{
-      console.log(err)
-  })
-}
+  getAllJobsById = () => {
+    const url = `https://labeninjas.herokuapp.com/jobs/${this.state.dadosCards[0].id}`
+    console.log(this.state.dadosCards[0].id)
+    axios
+      .get(url, headers)
+      .then((res) => {
+        console.log(res.data.jobs)
 
-componentDidMount(){
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  componentDidMount() {
     this.getAllJobs()
-    
-}
 
-onChangeSelect=(e)=>{
+  }
+
+  onChangeSelect = (e) => {
     console.log(e.target.value)
-    this.setState({select: e.target.value})
-}
+    this.setState({ select: e.target.value })
+  }
   onChangeBusca = (event) => {
     this.setState({ inputBusca: event.target.value })
   }
@@ -82,17 +83,49 @@ onChangeSelect=(e)=>{
   }
 
   render() {
-    const mapeandoJobs = this.state.dadosCards.map((dado)=>{
+    const copiaDadosCards = [...this.state.dadosCards]
+      .filter((dado) => {
+        
+        return this.state.inputValorMin === "" || dado.price >= this.state.inputValorMin
+      })
+      .filter((dado) => {
+        
+        return this.state.inputValorMax === "" || dado.price <= this.state.inputValorMax
+      })
+     .filter((dado) => {
+        return dado.title.toLowerCase().includes(this.state.inputBusca.toLowerCase())
+      });
+      // 
+    copiaDadosCards.sort((primeiroJob, segundoJob) => {
+      switch (this.state.select) {
+        case "titulo":
+          return (
+            primeiroJob.title.localeCompare(segundoJob.title)
+          );
+          case "prazo":
+            return (
+              new Date(primeiroJob.dueDate) -new Date(segundoJob.dueDate).getTime()
+            )
+        default:
+          return (
+            this.state.select *
+            (primeiroJob.price - segundoJob.price)
+          );
+      }
+    });
+
+    //-------- map ára reederizar na tela
+    const mapeandoJobs = copiaDadosCards.map((dado) => {
       return (
-        <ComponentCardServicos key={dado.id} id = {dado.id}></ComponentCardServicos>
+        <ComponentCardServicos key={dado.id} id={dado.id}></ComponentCardServicos>
       )
     })
 
     return (
       <>
-       
-        <ComponenteFiltro
 
+        <ComponenteFiltro
+          
           inputBusca={this.state.inputBusca}
           onChangeBusca={this.onChangeBusca}
           inputValorMin={this.state.inputValorMin}
@@ -109,11 +142,11 @@ onChangeSelect=(e)=>{
         <h2>O talento certo no momento certo</h2>
         <>SOU A PÁGINA DE CONTRATAR SERVIÇOS</>
         <Card>
-        {mapeandoJobs}
+          {mapeandoJobs}
         </Card>
-        </>
+      </>
 
-        
+
     );
   }
 }
