@@ -8,6 +8,7 @@ import PageCarrinho from "./pages/PageCarrinho";
 import PageMostrarServicos from "./pages/PageMostrarServicos";
 import Footer from "./components/Footer";
 import ComponenteHeader from "./components/ComponenteHeader";
+import ComponenteCarrinho from "./components/ComponenteCarrinho";
 
 const headers = {
   headers: {
@@ -88,6 +89,7 @@ export default class App extends React.Component {
           </button>
           <button onClick={() => this.mudaTela("servicos")}>Contratar um Ninja</button> */}
             <>{this.escolherTela()}</>
+            
           </div>
         </main>
 
