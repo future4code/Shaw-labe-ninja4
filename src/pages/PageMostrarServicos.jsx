@@ -102,7 +102,11 @@ onChangeSelect=(e)=>{
   render() {
     const mapeandoJobs = this.state.dadosCards.map((dado)=>{
       return (
-        <ComponentCardServicos key={dado.id} id = {dado.id} adicionaItemCarrinho={this.adicionaItemCarrinho} ></ComponentCardServicos>
+        <ComponentCardServicos key={dado.id} 
+        id = {dado.id} 
+        adicionaItemCarrinho={this.adicionaItemCarrinho} 
+        goToDetalhes = {()=>this.props.goToDetalhes(this.props.id)}
+        ></ComponentCardServicos>
       )
     })
     console.log(this.state.carrinho);
@@ -134,6 +138,7 @@ onChangeSelect=(e)=>{
               dadosCards={this.state.carrinho}
               valorTotal={this.state.valorTotal}
               removerItemDoCarrinho = {this.removerItemDoCarrinho}
+              
             />
         </>
 
