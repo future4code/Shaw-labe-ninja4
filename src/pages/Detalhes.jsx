@@ -22,7 +22,7 @@ export default class Detalhes extends React.Component {
         
         return (
             <div>
-                Eu sou o Detalhe
+                Eu a página de Detalhes
             </div>
         )
     }
