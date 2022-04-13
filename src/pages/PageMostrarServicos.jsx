@@ -86,12 +86,9 @@ export default class PageMostrarServicos extends React.Component {
     alert("removeu", item);
   };
 
-  
-
   render() {
     const mapeandoJobs = this.state.dadosCards.map((dado) => {
       return (
-
         <ComponentCardServicos
           key={dado.id}
           id={dado.id}
@@ -118,24 +115,13 @@ export default class PageMostrarServicos extends React.Component {
         <h2>O talento certo no momento certo</h2>
         <>SOU A PÁGINA DE CONTRATAR SERVIÇOS</>
 
-        <Card>
-        {mapeandoJobs}
-        </Card>
-        <ComponenteCarrinho
-              dadosCards={this.state.carrinho}
-              valorTotal={this.state.valorTotal}
-              removerItemDoCarrinho = {this.removerItemDoCarrinho}
-              
-            />
-        </>
+        <Card>{mapeandoJobs}</Card>
 
-        
         <ComponenteCarrinho
           dadosCards={this.state.carrinho}
           valorTotal={this.state.valorTotal}
           removerItemDoCarrinho={this.removerItemDoCarrinho}
-        /> 
-       
+        />
       </>
     );
   }

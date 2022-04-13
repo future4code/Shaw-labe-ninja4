@@ -15,6 +15,7 @@ const Carrinho = styled.div`
   }
 `;
 
+
 const headers = {
   headers: {
     Authorization: "34cb6ce8-5c1e-4c13-8f08-adc127e1cd24",
