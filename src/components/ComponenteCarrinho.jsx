@@ -2,7 +2,8 @@ import React from "react";
 import axios from "axios";
 import styled from "styled-components";
 import ItensCarrinho from "./ItensCarrinho";
-
+import labeninjas from '../assets/labeninjas.png'
+import labetransp from '../assets/labetransp.png'
 const Carrinho = styled.div`
   display: flex;
   align-items: center;

@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
 import styled from"styled-components";
-
+import labeninjas from '../assets/labeninjas.png'
+import labetransp from '../assets/labetransp.png'
 
 const headers = {
 	headers: {
@@ -69,6 +70,7 @@ export default class ComponenteHeader extends React.Component{
       <Cabecalho>
         
           <Titulo>
+            
             <h1>
               Labe
               <span>

@@ -5,6 +5,8 @@ import ComponenteFiltro from "../components/ComponenteFiltro";
 import ComponentCardServicos from "../components/ComponenteCardServicos";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import ComponenteCarrinho from "../components/ComponenteCarrinho";
+import labeninjas from '../assets/labeninjas.png'
+import labetransp from '../assets/labetransp.png'
 
 const Card = styled.div`
   display: flex;
