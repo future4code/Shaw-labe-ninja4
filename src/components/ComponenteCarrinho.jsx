@@ -7,12 +7,14 @@ const Carrinho = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 90%;
-  border: 1px solid black;
-  border-radius: 20px;
-  p {
-    margin: 10px 0px;
-  }
+  width: 50%;
+  border: 1px solid #dfdbf0;
+  border-radius: 6px;
+  padding: 10px;
+  background-color: #fff;
+  background: #dfdbf0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 1%;
 `;
 
 
