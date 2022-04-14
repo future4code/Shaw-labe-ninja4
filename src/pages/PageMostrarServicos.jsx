@@ -36,7 +36,6 @@ export default class PageMostrarServicos extends React.Component {
       .get(url, headers)
       .then((res) => {
         this.setState({ dadosCards: res.data.jobs });
-        console.log(res.data.jobs);
       })
       .catch((err) => {
         console.log(err);
@@ -123,7 +122,7 @@ export default class PageMostrarServicos extends React.Component {
         
   
       
-          
+  
 
    const mapeandoJobs = copiaDadosCards.map((dado) => {
       return (
@@ -131,9 +130,13 @@ export default class PageMostrarServicos extends React.Component {
           key={dado.id}
           id={dado.id}
           adicionaItemCarrinho={this.adicionaItemCarrinho}
+          goToDetalhes = {this.props.goToDetalhes}
         ></ComponentCardServicos>
       );
     });
+
+   
+    
 
     console.log(this.state.carrinho);
 
