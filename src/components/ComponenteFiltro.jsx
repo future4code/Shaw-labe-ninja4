@@ -51,11 +51,11 @@ select{
 export default class ComponenteFiltro extends React.Component {
 
 
-   
+
 
     render() {
 
-              
+
         return (
             <ContainerFiltros>
                 <ContainerBusca>
@@ -84,15 +84,14 @@ export default class ComponenteFiltro extends React.Component {
 
                     />
                     <select name="Filtro" onChange={this.props.onChangeSelect} value={this.props.select} className="select">
-
-                        <option value="">Mais filtros</option>
+                        
                         <option value="prazo">Prazo</option>
                         <option value="titulo">Titulo</option>
                         <option value={1}>Preço Crescente</option>
                         <option value={-1}>Preço Decrescente</option>
 
                     </select>
-                   
+
                 </ContainerFiltrosfilho>
             </ContainerFiltros>
         )
