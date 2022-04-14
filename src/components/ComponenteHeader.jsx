@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import styled from"styled-components";
+import labeninjas from '../assets/labeninjas.png'
+import labetransp from '../assets/labetransp.png'
 
 const headers = {
 	headers: {
@@ -8,13 +10,20 @@ const headers = {
 	},
   };
 
+  const ImgLogo = styled.img`
+  height: 12vh;
+  @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    height: 8vh;
+  }
+`;
+
 
 
   const Cabecalho = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
+  height: 12vh;
   flex-wrap: wrap;
   background: #7869bf;
   
@@ -24,6 +33,7 @@ display: flex;
 margin-left: 36px;
 color: white;
 font-size: 16px;
+align-items: center;
 
 span {
   /* font-size: 16px; */
@@ -59,7 +69,9 @@ export default class ComponenteHeader extends React.Component{
   render() {
     return (
       <Cabecalho>
+        
           <Titulo>
+            <ImgLogo src={labetransp} alt="logomarca"/>
             <h1>
               Labe
               <span>

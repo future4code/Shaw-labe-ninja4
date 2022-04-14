@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import styled from "styled-components";
+import labeninjas from '../assets/labeninjas.png'
+import labetransp from '../assets/labetransp.png'
 
 const headers = {
   headers: {
@@ -9,13 +11,35 @@ const headers = {
 };
 
 const ConjuntoDeItens = styled.div`
-  border: 1px solid black;
+  font-size: 14px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  //justify-content: space-between;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  margin: 1%;
+  border: 1px solid #dfdbf0;
+  border-radius: 10px;
+  background-color: white;
+  background: #dfdbf0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  
   
 `;
+
+
+
+const Button = styled.button`
+font-size: 12px;
+border: solid 1px black;
+border-radius: 10px;
+color: black;
+padding: 7px 10px;
+font-weight: bold;
+
+`
 
 export default class ItensCarrinho extends React.Component {
   render() {
@@ -27,7 +51,7 @@ export default class ItensCarrinho extends React.Component {
         <p>Payment Method: {this.props.paymentMethods}</p>
         <p>Due date: {this.props.dueDate}</p>
         
-        <button onClick={this.props.onClick}>Remover</button>
+        <Button onClick={()=> this.props.onClick(this.props.id)}>Remover</Button>
       </ConjuntoDeItens>
     );
   }

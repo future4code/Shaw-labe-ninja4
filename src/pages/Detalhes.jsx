@@ -1,7 +1,12 @@
 import React from "react";
 import axios from "axios";
 import styled from "styled-components";
+
 import ComponentCardServicos from "../components/ComponenteCardServicos";
+
+
+import labeninjas from '../assets/labeninjas.png'
+import labetransp from '../assets/labetransp.png'
 
 const headers = {
 	headers: {
