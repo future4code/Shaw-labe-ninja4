@@ -23,7 +23,7 @@ const headers = {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
+  height: 12vh;
   flex-wrap: wrap;
   background: #7869bf;
   
@@ -33,6 +33,7 @@ display: flex;
 margin-left: 36px;
 color: white;
 font-size: 16px;
+align-items: center;
 
 span {
   /* font-size: 16px; */
@@ -70,7 +71,7 @@ export default class ComponenteHeader extends React.Component{
       <Cabecalho>
         
           <Titulo>
-            
+            <ImgLogo src={labetransp} alt="logomarca"/>
             <h1>
               Labe
               <span>

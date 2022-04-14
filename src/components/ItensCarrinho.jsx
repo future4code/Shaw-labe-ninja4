@@ -51,7 +51,7 @@ export default class ItensCarrinho extends React.Component {
         <p>Payment Method: {this.props.paymentMethods}</p>
         <p>Due date: {this.props.dueDate}</p>
         
-        <Button onClick={this.props.onClick}>Remover</Button>
+        <Button onClick={()=> this.props.onClick(this.props.id)}>Remover</Button>
       </ConjuntoDeItens>
     );
   }

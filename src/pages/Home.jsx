@@ -3,6 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 import labeninjas from '../assets/labeninjas.png'
 import labetransp from '../assets/labetransp.png'
+import Footer from "../components/Footer";
 
 const headers = {
   headers: {
@@ -21,20 +22,20 @@ const headers = {
 
 `; */
 
-const ContainerBotoes = styled.div`
+/* const ContainerBotoes = styled.div`
   display: flex;
   margin: 1%;
-`;
+`; */
 
 const HomeStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 8%;
+  height: 88vh;
+  background: #7869bf;
 `;
 
 const Nav = styled.div`
-margin-right: 36px;
 button {
   margin: 16px;
   color: #161616;
@@ -60,8 +61,9 @@ export default class Home extends React.Component {
     return (
       <>
         <HomeStyle>
-          <h1>LabeNinjas</h1>
-          <h2>O talento certo no momento certo</h2>
+          <img src={labeninjas} alt="logomarca"/>
+          {/* <h1>LabeNinjas</h1>
+          <h2>O talento certo no momento certo</h2> */}
 
           <Nav>
             <button onClick={this.props.goToCadastroServicos}>
@@ -72,6 +74,10 @@ export default class Home extends React.Component {
             </button>
           </Nav>
         </HomeStyle>
+      {/*   <footer>
+
+          <Footer/>
+        </footer> */}
         
       </>
     );
