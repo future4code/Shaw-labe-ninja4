@@ -1,7 +1,4 @@
 import React from "react";
-import { AppContainer } from "./components/AppContainer";
-import styled from "styled-components";
-import axios from "axios";
 import Home from "./pages/Home";
 import CadastroServicos from "./pages/CadastroServicos";
 import PageCarrinho from "./pages/PageCarrinho";
@@ -10,7 +7,7 @@ import Footer from "./components/Footer";
 import ComponenteHeader from "./components/ComponenteHeader";
 import ComponenteCarrinho from "./components/ComponenteCarrinho";
 import Detalhes from "./pages/Detalhes";
-import ComponentCardServicos from "./components/ComponenteCardServicos"
+import ComponentCardServicos from "./components/ComponenteCardServicos";
 const headers = {
   headers: {
     Authorization: "34cb6ce8-5c1e-4c13-8f08-adc127e1cd24",
@@ -20,7 +17,7 @@ const headers = {
 export default class App extends React.Component {
   state = {
     telaAtual: "home",
-    idCard:""
+    idCard: "",
   };
 
   goToCadastroServicos = () => {
@@ -28,7 +25,7 @@ export default class App extends React.Component {
   };
 
   goToMostrarServicos = (id) => {
-    this.setState({ telaAtual: "servicos", idCard:id });
+    this.setState({ telaAtual: "servicos", idCard: id });
   };
 
   goToDetalhes = (id) => {
@@ -67,17 +64,19 @@ export default class App extends React.Component {
           />
         );
       case "servicos":
-        return <PageMostrarServicos 
-            goToDetalhes = {this.goToDetalhes}
-            idCard = {this.idCard}
-            />;
+        return (
+          <PageMostrarServicos
+            goToDetalhes={this.goToDetalhes}
+            idCard={this.state.idCard}
+          />
+        );
       case "detalhes":
         return (
           <Detalhes
             goToHome={this.goToHome}
             goToCarrinho={this.goToCarrinho}
-            goToDetalhes = {this.goToDetalhes}
-            idCard = {this.state.idCard}
+            goToDetalhes={this.goToDetalhes}
+            idCard={this.state.idCard}
           />
         );
       default:
@@ -90,7 +89,7 @@ export default class App extends React.Component {
   };
 
   render() {
-    console.log("idCard dentro do app",this.state.idCard)
+    console.log("idCard dentro do app", this.state.idCard);
     return (
       <>
         <header>
@@ -104,20 +103,11 @@ export default class App extends React.Component {
 
         <main>
           <div>
-           {/*  <button onClick={() => this.mudaTela("home")}>Home</button>
-            <button onClick={() => this.mudaTela("carrinho")}>Carrinho</button>
-             <button onClick={() => this.mudaTela("cadastro")}>
-            Quero ser um Ninja
-          </button>
-          <button onClick={() => this.mudaTela("servicos")}>Contratar um Ninja</button> */}
             <>{this.escolherTela()}</>
-            
           </div>
         </main>
 
-        {/* <footer>
-          <>FOOOTER</>
-        </footer> */}
+        <Footer />
       </>
     );
   }

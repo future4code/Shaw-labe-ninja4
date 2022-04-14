@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import styled from "styled-components";
 import labetransp from "../assets/labetransp.png";
 
@@ -8,6 +7,11 @@ const headers = {
     Authorization: "34cb6ce8-5c1e-4c13-8f08-adc127e1cd24",
   },
 };
+
+const DescriçãoFooter = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 const ImgLogo = styled.img`
   height: 12vh;
@@ -20,8 +24,9 @@ const FootStyle = styled.footer`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 2%;
-  height: 5vh;
+  background-color: #9387cc;
+  color: white;
+  justify-content: center;
 `;
 
 export default class Footer extends React.Component {
@@ -29,8 +34,14 @@ export default class Footer extends React.Component {
     return (
       <>
         <FootStyle>
-        <ImgLogo src={labetransp} alt="logomarca" />
-        <h4>Avenida de Pruneridge, 19111 Cupertino, CA 95014</h4>
+          <ImgLogo src={labetransp} alt="logomarca" />
+          <DescriçãoFooter>
+            <h4>Avenida de Pruneridge, 19111 Cupertino, CA 95014</h4>
+            <h5>
+              By Pablo Gomes, Sérvulo Silva, Silvia Cristiana, Rodrigo Vieira,
+              Will ©
+            </h5>
+          </DescriçãoFooter>
         </FootStyle>
       </>
     );
