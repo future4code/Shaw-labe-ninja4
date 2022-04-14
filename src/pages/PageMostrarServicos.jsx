@@ -12,11 +12,23 @@ const Card = styled.div`
   gap: 12px;
 `;
 
+const H2 = styled.h2`
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1%;
+  
+`
+
 const headers = {
   headers: {
     Authorization: "34cb6ce8-5c1e-4c13-8f08-adc127e1cd24",
   },
 };
+
+const JobECarrinho = styled.div`
+  display: flex;
+
+`
 
 export default class PageMostrarServicos extends React.Component {
   state = {
@@ -28,7 +40,6 @@ export default class PageMostrarServicos extends React.Component {
     valorTotal: 0,
     carrinho: [],
   };
-
 
   getAllJobs = () => {
     const url = "https://labeninjas.herokuapp.com/jobs";
@@ -85,65 +96,58 @@ export default class PageMostrarServicos extends React.Component {
   };
 
   render() {
-
     const copiaDadosCards = [...this.state.dadosCards]
       .filter((dado) => {
-        
-        return this.state.inputValorMin === "" || dado.price >= this.state.inputValorMin
+        return (
+          this.state.inputValorMin === "" ||
+          dado.price >= this.state.inputValorMin
+        );
       })
       .filter((dado) => {
-        
-        return this.state.inputValorMax === "" || dado.price <= this.state.inputValorMax
+        return (
+          this.state.inputValorMax === "" ||
+          dado.price <= this.state.inputValorMax
+        );
       })
-     .filter((dado) => {
-        return dado.title.toLowerCase().includes(this.state.inputBusca.toLowerCase())
+      .filter((dado) => {
+        return dado.title
+          .toLowerCase()
+          .includes(this.state.inputBusca.toLowerCase());
       });
-      // 
+    //
     copiaDadosCards.sort((primeiroJob, segundoJob) => {
       switch (this.state.select) {
         case "titulo":
+          return primeiroJob.title.localeCompare(segundoJob.title);
+        case "prazo":
           return (
-            primeiroJob.title.localeCompare(segundoJob.title)
+            new Date(primeiroJob.dueDate) -
+            new Date(segundoJob.dueDate).getTime()
           );
-          case "prazo":
-            return (
-              new Date(primeiroJob.dueDate) -new Date(segundoJob.dueDate).getTime()
-            )
         default:
-          return (
-            this.state.select *
-            (primeiroJob.price - segundoJob.price)
-          );
+          return this.state.select * (primeiroJob.price - segundoJob.price);
       }
     });
 
     //-------- map ára reederizar na tela
-    
-        
-  
-      
-  
 
-   const mapeandoJobs = copiaDadosCards.map((dado) => {
+    const mapeandoJobs = copiaDadosCards.map((dado) => {
       return (
         <ComponentCardServicos
           key={dado.id}
           id={dado.id}
           adicionaItemCarrinho={this.adicionaItemCarrinho}
-          goToDetalhes = {this.props.goToDetalhes}
+          goToDetalhes={this.props.goToDetalhes}
         ></ComponentCardServicos>
       );
     });
-
-   
-    
 
     console.log(this.state.carrinho);
 
     return (
       <>
+      <H2>O talento certo no momento certo</H2>
         <ComponenteFiltro
-
           inputBusca={this.state.inputBusca}
           onChangeBusca={this.onChangeBusca}
           inputValorMin={this.state.inputValorMin}
@@ -153,19 +157,20 @@ export default class PageMostrarServicos extends React.Component {
           select={this.state.select}
           onChangeSelect={this.onChangeSelect}
         />
-        <h1>LabeNinjas</h1>
-        <h2>O talento certo no momento certo</h2>
-        <>SOU A PÁGINA DE CONTRATAR SERVIÇOS</>
+        
+        
+       
 
-        <Card>{mapeandoJobs}</Card>
+        <JobECarrinho>
+          <Card>{mapeandoJobs}</Card>
 
-        <ComponenteCarrinho
-          dadosCards={this.state.carrinho}
-          valorTotal={this.state.valorTotal}
-          removerItemDoCarrinho={this.removerItemDoCarrinho}
-        />
+          <ComponenteCarrinho
+            dadosCards={this.state.carrinho}
+            valorTotal={this.state.valorTotal}
+            removerItemDoCarrinho={this.removerItemDoCarrinho}
+          />
+        </JobECarrinho>
       </>
-
     );
   }
 }

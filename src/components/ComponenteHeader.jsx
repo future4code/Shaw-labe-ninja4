@@ -2,11 +2,19 @@ import React from "react";
 import axios from "axios";
 import styled from"styled-components";
 
+
 const headers = {
 	headers: {
 	  Authorization: "34cb6ce8-5c1e-4c13-8f08-adc127e1cd24",
 	},
   };
+
+  const ImgLogo = styled.img`
+  height: 12vh;
+  @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    height: 8vh;
+  }
+`;
 
 
 
@@ -59,6 +67,7 @@ export default class ComponenteHeader extends React.Component{
   render() {
     return (
       <Cabecalho>
+        
           <Titulo>
             <h1>
               Labe
