@@ -16,7 +16,7 @@ export default class PageCarrinho extends React.Component {
         <h1>LabeNinjas</h1>
         <h2>O talento certo no momento certo</h2>
         
-        <h3><ComponenteCarrinho/></h3>
+        <ComponenteCarrinho/>
       </>
     );
   }
