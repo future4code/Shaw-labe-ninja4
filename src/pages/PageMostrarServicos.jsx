@@ -5,8 +5,6 @@ import ComponenteFiltro from "../components/ComponenteFiltro";
 import ComponentCardServicos from "../components/ComponenteCardServicos";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import ComponenteCarrinho from "../components/ComponenteCarrinho";
-import labeninjas from '../assets/labeninjas.png'
-import labetransp from '../assets/labetransp.png'
 
 const Card = styled.div`
   display: flex;
@@ -18,8 +16,7 @@ const H2 = styled.h2`
   display: flex;
   justify-content: space-evenly;
   padding: 1%;
-  
-`
+`;
 
 const headers = {
   headers: {
@@ -29,8 +26,7 @@ const headers = {
 
 const JobECarrinho = styled.div`
   display: flex;
-
-`
+`;
 
 export default class PageMostrarServicos extends React.Component {
   state = {
@@ -55,7 +51,6 @@ export default class PageMostrarServicos extends React.Component {
       });
   };
 
-  
   componentDidMount() {
     this.getAllJobs();
   }
@@ -79,22 +74,13 @@ export default class PageMostrarServicos extends React.Component {
     const addItem = this.state.dadosCards.find((item) => id === item.id);
     const novoItemCarrinho = [...this.state.carrinho, addItem];
     this.setState({ carrinho: novoItemCarrinho });
+    //this.adicionarValorTotal()
   };
 
   removerItemDoCarrinho = (id) => {
-    const NovoCard = this.state.carrinho
-      .map((item)=>{
-        if (id === item.id){
-          return{
-            ...item,
-            quantidade: item.quantidade -1 
-          }
-        }
-        return item 
-      })
-      .filter((item)=> item.quantidade > 0)
-    this.setState({ carrinho: NovoCard})
-    alert("Removeu");
+    console.log(this.state.carrinho, "fui chamada");
+    const NovoCard = this.state.carrinho.filter((item) => item.id !== id);
+    this.setState({ carrinho: NovoCard });
   };
 
   render() {
@@ -116,7 +102,7 @@ export default class PageMostrarServicos extends React.Component {
           .toLowerCase()
           .includes(this.state.inputBusca.toLowerCase());
       });
-    //
+
     copiaDadosCards.sort((primeiroJob, segundoJob) => {
       switch (this.state.select) {
         case "titulo":
@@ -137,28 +123,22 @@ export default class PageMostrarServicos extends React.Component {
       return (
         <ComponentCardServicos
           titulo={dado.title}
-          preco = {dado.price}
+          preco={dado.price}
           prazo={dado.dueDate}
           descricao={dado.description}
           metodoPagamento={dado.paymentMethods}
           key={dado.id}
           id={dado.id}
           adicionaItemCarrinho={this.adicionaItemCarrinho}
-
-          goToDetalhes = {this.props.goToDetalhes}
-      //   idCard = {dado.id}
+          goToDetalhes={this.props.goToDetalhes}
+          //   idCard = {dado.id}
         />
       );
     });
 
-
-
-
-    console.log(this.state.carrinho);
-
     return (
       <>
-      <H2>O talento certo no momento certo</H2>
+        <H2>O talento certo no momento certo</H2>
         <ComponenteFiltro
           inputBusca={this.state.inputBusca}
           onChangeBusca={this.onChangeBusca}
@@ -169,9 +149,6 @@ export default class PageMostrarServicos extends React.Component {
           select={this.state.select}
           onChangeSelect={this.onChangeSelect}
         />
-        
-        
-       
 
         <JobECarrinho>
           <Card>{mapeandoJobs}</Card>

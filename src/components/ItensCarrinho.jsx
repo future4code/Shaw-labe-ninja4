@@ -1,14 +1,5 @@
 import React from "react";
-import axios from "axios";
 import styled from "styled-components";
-import labeninjas from '../assets/labeninjas.png'
-import labetransp from '../assets/labetransp.png'
-
-const headers = {
-  headers: {
-    Authorization: "34cb6ce8-5c1e-4c13-8f08-adc127e1cd24",
-  },
-};
 
 const ConjuntoDeItens = styled.div`
   font-size: 14px;
@@ -25,21 +16,16 @@ const ConjuntoDeItens = styled.div`
   background-color: white;
   background: #dfdbf0;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  
-  
 `;
 
-
-
 const Button = styled.button`
-font-size: 12px;
-border: solid 1px black;
-border-radius: 10px;
-color: black;
-padding: 7px 10px;
-font-weight: bold;
-
-`
+  font-size: 12px;
+  border: solid 1px black;
+  border-radius: 10px;
+  color: black;
+  padding: 7px 10px;
+  font-weight: bold;
+`;
 
 export default class ItensCarrinho extends React.Component {
   render() {
@@ -50,8 +36,12 @@ export default class ItensCarrinho extends React.Component {
         <p>Price: {this.props.price}</p>
         <p>Payment Method: {this.props.paymentMethods}</p>
         <p>Due date: {this.props.dueDate}</p>
-        
-        <Button onClick={()=> this.props.onClick(this.props.id)}>Remover</Button>
+
+        <Button
+          onClick={() => this.props.removerItemDoCarrinho(this.props.idCard)}
+        >
+          Remover
+        </Button>
       </ConjuntoDeItens>
     );
   }
