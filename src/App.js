@@ -10,7 +10,7 @@ import Footer from "./components/Footer";
 import ComponenteHeader from "./components/ComponenteHeader";
 import ComponenteCarrinho from "./components/ComponenteCarrinho";
 import Detalhes from "./pages/Detalhes";
-
+import ComponentCardServicos from "./components/ComponenteCardServicos"
 const headers = {
   headers: {
     Authorization: "34cb6ce8-5c1e-4c13-8f08-adc127e1cd24",
@@ -20,7 +20,7 @@ const headers = {
 export default class App extends React.Component {
   state = {
     telaAtual: "home",
-    idCard: ""
+    idCard:""
   };
 
   goToCadastroServicos = () => {
@@ -77,7 +77,7 @@ export default class App extends React.Component {
             goToHome={this.goToHome}
             goToCarrinho={this.goToCarrinho}
             goToDetalhes = {this.goToDetalhes}
-            idCard = {this.idCard}
+            idCard = {this.state.idCard}
           />
         );
       default:
@@ -90,6 +90,7 @@ export default class App extends React.Component {
   };
 
   render() {
+    console.log("idCard dentro do app",this.state.idCard)
     return (
       <>
         <header>

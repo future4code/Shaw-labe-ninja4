@@ -55,19 +55,7 @@ export default class PageMostrarServicos extends React.Component {
       });
   };
 
-  getAllJobsById = () => {
-    const url = `https://labeninjas.herokuapp.com/jobs/${this.state.dadosCards[0].id}`;
-    console.log(this.state.dadosCards[0].id);
-    axios
-      .get(url, headers)
-      .then((res) => {
-        console.log(res.data.jobs);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
+  
   componentDidMount() {
     this.getAllJobs();
   }
@@ -148,13 +136,23 @@ export default class PageMostrarServicos extends React.Component {
     const mapeandoJobs = copiaDadosCards.map((dado) => {
       return (
         <ComponentCardServicos
+          titulo={dado.title}
+          preco = {dado.price}
+          prazo={dado.dueDate}
+          descricao={dado.description}
+          metodoPagamento={dado.paymentMethods}
           key={dado.id}
           id={dado.id}
           adicionaItemCarrinho={this.adicionaItemCarrinho}
-          goToDetalhes={this.props.goToDetalhes}
-        ></ComponentCardServicos>
+
+          goToDetalhes = {this.props.goToDetalhes}
+      //   idCard = {dado.id}
+        />
       );
     });
+
+
+
 
     console.log(this.state.carrinho);
 

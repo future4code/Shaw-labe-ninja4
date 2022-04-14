@@ -20,7 +20,6 @@ const headers = {
   border-radius: 6px;
   background: #dfdbf0;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
 `
 const InfoCard = styled.div`
   display: flex;
@@ -61,51 +60,21 @@ let iconStyles = { color: "#7869bf", fontSize: "2em", cursor: "pointer" };
 
 
 export default class ComponentCardServicos extends React.Component{
-  state = {
-    titulo:"",
-    prazo:"",
-    preco: 0,
-    idServico: "",
-    descricao: ""
-  }
-
   
-componentDidMount(){
-  this.getAllJobsById()
-}
-getAllJobsById = () => {
-  const url = `https://labeninjas.herokuapp.com/jobs/${this.props.id}`
-  axios
-  .get(url,headers)
-  .then((res)=>{
-    this.setState({titulo:res.data.title})
-    this.setState({prazo:res.data.dueDate})
-    this.setState({preco:res.data.price})
-    this.setState({idServico:res.data.id})
-    this.setState({descricao:res.data.description})
-
-    
-     
-  })
-  .catch((err)=>{
-      console.log(err)
-  })
-}
   
   render() {
-    
     return (
       <CardContainer>
         <InfoCard>
           <Infos>
-            <h3>{this.state.titulo}</h3>
-            <p>Até <span>{this.state.prazo}</span> por <span>R${this.state.preco}</span></p>
+            <h3>{this.props.titulo}</h3>
+            <p>Até <span>{this.props.prazo}</span> por <span>R${this.props.preco}</span></p>
             <br/>
           </Infos>
           <Botoes>
             <button 
-            onClick={this.props.goToDetalhes} 
-            id = {this.state.idServico}
+            onClick={()=>this.props.goToDetalhes(this.props.id)}
+            idCard = {this.props.idCard}
             >Ver Detalhes</button>
             <BsFillCartCheckFill style={iconStyles} onClick={()=> this.props.adicionaItemCarrinho(this.props.id)}/>
           </Botoes>

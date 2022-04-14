@@ -42,7 +42,7 @@ export default class ComponenteCarrinho extends React.Component {
         
       );
     });
-    console.log(this.props.dadosCards);
+    
     return (
       <>
         <Carrinho>
