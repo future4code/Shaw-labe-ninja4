@@ -10,19 +10,12 @@ const headers = {
 
 export default class Detalhes extends React.Component {
 
-    state = {
-        titulo:"",
-        prazo:"",
-        preco: 0,
-        idServico: "",
-        descricao: ""
-      }
-
+      
     render(){
-        
+    
         return (
             <div>
-                Eu a página de Detalhes
+              Oi, eu sou a página Detalhes
             </div>
         )
     }

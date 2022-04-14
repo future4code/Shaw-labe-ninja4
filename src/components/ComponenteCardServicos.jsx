@@ -81,6 +81,8 @@ getAllJobsById = () => {
     this.setState({preco:res.data.price})
     this.setState({idServico:res.data.id})
     this.setState({descricao:res.data.description})
+
+    
      
   })
   .catch((err)=>{
@@ -89,6 +91,7 @@ getAllJobsById = () => {
 }
   
   render() {
+    
     return (
       <CardContainer>
         <InfoCard>
@@ -98,13 +101,9 @@ getAllJobsById = () => {
             <br/>
           </Infos>
           <Botoes>
-            <button onClick={()=>this.props.goToDetalhes(this.props.id)} 
-            id = {this.props.id}
-            titulo = {this.state.titulo}
-            prazo = {this.state.prazo}
-            preco = {this.state.preco}
-            idServico = {this.state.idServico}
-            descricao = {this.state.descricao}
+            <button 
+            onClick={this.props.goToDetalhes} 
+            id = {this.state.idServico}
             >Ver Detalhes</button>
             <BsFillCartCheckFill style={iconStyles} onClick={()=> this.props.adicionaItemCarrinho(this.props.id)}/>
           </Botoes>
