@@ -17,14 +17,13 @@ const Container = styled.div `
   align-items: center;
   `
 
-    const Input = styled.input`
+const Input = styled.input`
   font-size: 12px;
   border: solid 1px black;
   border-radius: 10px;
   color: black;
   padding: 7px 10px;
   font-weight: bold;
-
   `
   const Select = styled.select`
   font-size: 12px;
@@ -33,9 +32,7 @@ const Container = styled.div `
   color: black;
   padding: 7px 10px;
   font-weight: bold;
-  
-
-  `
+   `
   const Button = styled.button`
   font-size: 12px;
   border: solid 1px black;
@@ -43,7 +40,6 @@ const Container = styled.div `
   color: black;
   padding: 7px 10px;
   font-weight: bold;
-
   `
   export default class CadastroServicos extends React.Component {
     state={
@@ -129,7 +125,7 @@ this.setState({titulo:ev.target.value})
                 size="50" placeholder="Preço" value={this.state.preco} onChange={this.onChangePreco}
                 /><p></p>
            <Select multiple value={this.state.formasPagamento} onChange={this.formaPagamento} > 
-            <option >Cartão de Crédito</option>
+            <option type="checkbox">Cartão de Crédito</option>
             <option >Cartão de Débito</option>
             <option >PayPal</option>
             <option >Boleto</option>
