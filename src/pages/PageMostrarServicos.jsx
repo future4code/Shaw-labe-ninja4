@@ -93,8 +93,20 @@ export default class PageMostrarServicos extends React.Component {
     this.setState({ carrinho: novoItemCarrinho });
   };
 
-  removerItemDoCarrinho = (item) => {
-    alert("removeu", item);
+  removerItemDoCarrinho = (id) => {
+    const NovoCard = this.state.carrinho
+      .map((item)=>{
+        if (id === item.id){
+          return{
+            ...item,
+            quantidade: item.quantidade -1 
+          }
+        }
+        return item 
+      })
+      .filter((item)=> item.quantidade > 0)
+    this.setState({ carrinho: NovoCard})
+    alert("Removeu");
   };
 
   render() {
