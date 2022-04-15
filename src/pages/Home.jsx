@@ -32,31 +32,38 @@ const HomeStyle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-top: 1px solid #000;
+  /* border-top: 1px solid #000; */
   background-image: url(${fundoHome});
   background-size: cover;
   height: 100vh;
 `;
 
 const Nav = styled.div`
+   margin-top: 30%;
+    margin-right: 50%;
+    margin-left: 48px;
+
   button {
-    position: relative;
     margin: 16px;
     color: #161616;
-    font-size: 16px;
+    font-size: 32px;
     font-weight: 500;
-    padding: 2px 16px;
+    padding: 16px 12px;
     /* border: #fff; */
     border-radius: 6px;
     /* background: ; */
     width: auto;
-    height: 32px;
-    transition: all 0.3s;
+    transition: all 0.5s;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     cursor: pointer;
   }
   button:hover {
-    background: #7869bf;
+    /* background: #7869bf; */
+    background: #f44926;
     color: white;
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
   }
 `;
 

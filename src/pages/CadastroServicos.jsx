@@ -17,18 +17,25 @@ const Container = styled.div `
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  margin: 0 auto;
+  width: 500px;
+  height: 76vh;
+  border: 3px solid white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 25px 0 rgba(0, 0, 0, 0.19);
   `
 
 const Input = styled.input`
-  font-size: 12px;
+  font-size: 16px;
   border: solid 1px black;
   border-radius: 10px;
   color: black;
   padding: 7px 10px;
   font-weight: bold;
+  margin: 12px;
   `
   const Select = styled.select`
-  font-size: 12px;
+  margin: 12px;
+  font-size: 16px;
   border: solid 1px black;
   border-radius: 10px;
   color: black;
@@ -36,12 +43,24 @@ const Input = styled.input`
   font-weight: bold;
    `
   const Button = styled.button`
-  font-size: 12px;
+  font-size: 18px;
   border: solid 1px black;
   border-radius: 10px;
   color: black;
-  padding: 7px 10px;
+  padding: 8px 24px;
   font-weight: bold;
+  margin-top: 48px;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    /* background: #7869bf; */
+    background: #7869bf;
+    color: white;
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+  }
+
   `
   export default class CadastroServicos extends React.Component {
     state={
@@ -113,7 +132,7 @@ this.setState({titulo:ev.target.value})
 
         return (
             <Container>
-             <h2>Cadastre seu Serviço:</h2>
+             <h2>Cadastre seu Serviço</h2>
 
                 <Input type="texto"
                 size="50" placeholder="Título" value={this.state.titulo}  onChange={this.onChangeTitulo}
