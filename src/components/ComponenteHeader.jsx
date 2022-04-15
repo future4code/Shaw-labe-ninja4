@@ -32,7 +32,7 @@ const Titulo = styled.div`
 
   span {
     /* font-size: 16px; */
-    /* color: #F74202; */
+    color: #f44926;
   }
 `;
 

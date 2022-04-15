@@ -12,6 +12,11 @@ const CardContainer = styled.div`
   border-radius: 6px;
   background: #dfdbf0;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  &:hover {
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+  }
 `;
 const InfoCard = styled.div`
   display: flex;
@@ -19,16 +24,21 @@ const InfoCard = styled.div`
   align-items: center;
   justify-content: space-around;
   color: black;
+  height: 200px;
 `;
 const Infos = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-items: space-around;
+  gap: 36px;
   color: black;
+  margin-top: 12px;
 `;
 const Botoes = styled.div`
   display: flex;
   gap: 100px;
+  margin-bottom: 20px;
 
   button {
     border-radius: 6px;

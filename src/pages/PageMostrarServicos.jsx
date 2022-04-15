@@ -13,9 +13,13 @@ const Card = styled.div`
 `;
 
 const H2 = styled.h2`
-  display: flex;
-  justify-content: space-evenly;
+margin-left: 37.5%;
   padding: 1%;
+
+  span{
+    color: #f44926;
+    font-style: italic;
+  }
 `;
 
 const headers = {
@@ -138,7 +142,7 @@ export default class PageMostrarServicos extends React.Component {
 
     return (
       <>
-        <H2>O talento certo no momento certo</H2>
+        <H2>O talento <span>certo</span> no momento <span>certo</span></H2>
         <ComponenteFiltro
           inputBusca={this.state.inputBusca}
           onChangeBusca={this.onChangeBusca}

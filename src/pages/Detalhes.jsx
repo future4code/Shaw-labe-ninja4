@@ -14,6 +14,30 @@ const headers = {
 	},
   };
 
+  const ContainerDetalhes = styled.div`
+    height: 76vh;
+    display: flex;
+    align-items: center;
+  `
+
+  const Details = styled.div`
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    width: 400px;
+    height: 400px;
+    font-size: 18px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    h2{
+      /* margin-top: 12px; */
+    }
+  `
+
   
 export default class Detalhes extends React.Component {
   state = {
@@ -50,14 +74,15 @@ getAllJobsById = () => {
 }
     render(){
         return (
-            <div>
-              <h2>{this.state.titulo}</h2>
-              <p>Descrição: {this.state.descricao}</p>
-              <p>Prazo: {this.state.prazo}</p>
-              <p>Preço: {this.state.preco}</p>
-              <p>Método de Pagamento: {this.state.metodoPagamento}</p>
-
-            </div>
+            <ContainerDetalhes>
+              <Details>
+                <h2>{this.state.titulo}</h2>
+                <p><strong>Descrição: </strong>{this.state.descricao}</p>
+                <p><strong>Prazo: </strong>{this.state.prazo}</p>
+                <p><strong>Preço: </strong>R$ {this.state.preco}</p>
+                <p><strong>Método de Pagamento: </strong>{this.state.metodoPagamento}</p>
+              </Details>
+            </ContainerDetalhes>
         )
     }
 }

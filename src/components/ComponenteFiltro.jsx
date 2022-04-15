@@ -8,13 +8,14 @@ const ContainerFiltros = styled.div`
 const ContainerBusca = styled.div`
   display: flex;
   justify-content: center;
-  margin: 50px;
+  margin: 15px;
   input {
     width: 350px;
     height: 30px;
     padding-left: 10px;
     border-radius: 3px;
     font-style: italic;
+    font-size: 16px;
     border: 1px solid grey;
   }
 `;
@@ -26,7 +27,8 @@ const ContainerFiltrosfilho = styled.div`
     margin-right: 10px;
     width: 100px;
     height: 20px;
-    font-size: 12px;
+    font-size: 16px;
+    font-style: italic;
     border-radius: 3px;
     padding-left: 10px;
     border: 1px solid grey;
@@ -35,6 +37,7 @@ const ContainerFiltrosfilho = styled.div`
     border-radius: 3px;
     padding-left: 10px;
     border: 1px solid grey;
+    font-size: 16px;
   }
 `;
 
@@ -45,7 +48,7 @@ export default class ComponenteFiltro extends React.Component {
         <ContainerBusca>
           <input
             type="text"
-            placeholder="O que vc precisa?"
+            placeholder="O que você precisa?"
             value={this.props.inputBusca}
             onChange={this.props.onChangeBusca}
           />
