@@ -17,13 +17,20 @@ const Carrinho = styled.div`
 `;
 
 export default class ComponenteCarrinho extends React.Component {
+  valorTotal = () => {
+    const valorTotal = this.props.dadosCards.map((job) => {
+        return job.price
+    }).reduce((a, b) => a + b, 0)
+        return(valorTotal)
+  }
+
   render() {
     const itensAddAoCarrinho =
       this.props.dadosCards &&
-      this.props.dadosCards.map((item) => {
+      this.props.dadosCards.map((item, index) => {
         return (
           <ItensCarrinho
-            key={item.id}
+            key={index}
             idCard={item.id}
             title={item.title}
             description={item.description}
@@ -41,7 +48,7 @@ export default class ComponenteCarrinho extends React.Component {
           <h2>Carrinho:</h2>
           <div>{itensAddAoCarrinho}</div>
 
-          <p>Valor Total: R$ {this.props.valorTotal},00</p>
+          <p>Valor Total: R$ {this.valorTotal()},00</p>
         </Carrinho>
       </>
     );
