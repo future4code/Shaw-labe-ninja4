@@ -1,4 +1,4 @@
-<h1>LabeNinjas<h1/>
+<h1>LabeNinjas Brabo<h1/>
 
 <h2>Descrição do Projeto<h2/>
   - Site de oferta e contratação de serviços aos moldes do GetNinjas
